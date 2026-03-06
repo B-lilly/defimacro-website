@@ -1,0 +1,613 @@
+/* Seattle Kraken Colors */
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --teal: #99D9D9;
+  --teal-dark: #68B8B8;
+  --red-alert: #E9072B;
+  --gray-dark: #1a1a1a;
+  --gray-mid: #2a2a2a;
+  --gray-light: #888888;
+  --border-color: #3a3a3a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+}
+
+.logo-defi {
+  color: var(--black);
+  background: var(--white);
+  border-radius: 5px;
+  padding: 2px 6px;
+  margin-right: 1px;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  color: var(--gray-light);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--white);
+  background: var(--gray-mid);
+}
+
+.nav-link.active {
+  color: var(--teal);
+  background: rgba(153, 217, 217, 0.1);
+}
+
+/* Main */
+main {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Chart Container */
+.chart-container {
+  background: var(--white);
+  border: 4px solid #555555;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Chart Toolbar */
+.chart-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 2px solid #e5e5e5;
+  background: var(--white);
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chart-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.symbol {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.3px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.change {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.change.positive {
+  color: var(--teal-dark);
+}
+
+.change.negative {
+  color: var(--red-alert);
+}
+
+/* Overlay Tags */
+.overlay-tags {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.overlay-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 2px solid;
+}
+
+.overlay-tag .remove-overlay {
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+
+.overlay-tag .remove-overlay:hover {
+  opacity: 1;
+}
+
+/* Add Metric Button & Search */
+.add-metric-wrapper {
+  position: relative;
+}
+
+.add-metric-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 2px dashed #ccc;
+  background: transparent;
+  color: #999;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.add-metric-btn:hover {
+  border-color: var(--teal-dark);
+  color: var(--teal-dark);
+  background: rgba(153, 217, 217, 0.08);
+}
+
+.metric-search-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 280px;
+  background: var(--white);
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.metric-search-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  color: var(--black);
+  background: var(--white);
+}
+
+.metric-search-input::placeholder {
+  color: #aaa;
+}
+
+.metric-search-list {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.metric-search-item {
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--black);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.metric-search-item:hover {
+  background: rgba(153, 217, 217, 0.12);
+}
+
+.metric-search-empty {
+  padding: 12px;
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Chart Type Selector */
+.chart-type-selector {
+  display: flex;
+  gap: 2px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.type-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  color: #999;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.type-btn:hover {
+  color: #555;
+}
+
+.type-btn.active {
+  background: var(--white);
+  color: var(--black);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Timeframe Selector */
+.timeframe-selector {
+  display: flex;
+  gap: 2px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.tf-btn {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: #999;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.tf-btn:hover {
+  color: #555;
+}
+
+.tf-btn.active {
+  background: var(--white);
+  color: var(--black);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Chart Area */
+.chart-area {
+  display: flex;
+  background: var(--white);
+  height: 520px;
+}
+
+#custom-axes {
+  display: none;
+  flex-direction: row;
+  flex-shrink: 0;
+}
+
+.custom-axis {
+  width: 80px;
+  position: relative;
+  background: var(--white);
+  border-right: 2px solid #000000;
+  overflow: visible;
+}
+
+.axis-tick {
+  position: absolute;
+  right: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.axis-tick::after {
+  content: '';
+  position: absolute;
+  right: -9px;
+  top: 50%;
+  width: 6px;
+  height: 1px;
+  background: #000000;
+}
+
+.axis-current-value {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 2px 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  transform: translateY(-50%);
+  white-space: nowrap;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.axis-current-value .val-box {
+  padding: 2px 6px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.axis-current-value .val-label {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--white);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+#chart {
+  flex: 1;
+  min-width: 0;
+  height: 520px;
+  background: var(--white);
+}
+
+/* Screener */
+.screener-container {
+  background: var(--gray-dark);
+  border: 4px solid #555555;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.screener-header {
+  padding: 16px 20px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.screener-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.screener-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.screener-table thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-light);
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.screener-table thead th:hover {
+  color: var(--white);
+}
+
+.th-sort-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sort-icon {
+  font-size: 10px;
+  opacity: 0.4;
+  transition: opacity 0.15s;
+}
+
+.sort-icon.sort-active {
+  opacity: 1;
+  color: var(--teal);
+}
+
+.screener-table thead th.col-metric {
+  text-align: right;
+}
+
+.screener-table thead th.col-price,
+.screener-table thead th.col-change {
+  text-align: right;
+}
+
+.screener-table tbody tr {
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.screener-table tbody tr:hover {
+  background: var(--gray-mid);
+}
+
+.screener-table tbody tr.active-row {
+  background: rgba(153, 217, 217, 0.08);
+}
+
+.screener-table tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+.screener-table tbody td.col-price,
+.screener-table tbody td.col-change {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Currency Name Cell */
+.currency-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.currency-name:hover .currency-symbol {
+  color: var(--teal);
+}
+
+.currency-symbol {
+  font-weight: 700;
+  color: var(--white);
+  font-size: 14px;
+}
+
+.currency-full {
+  color: var(--gray-light);
+  font-size: 12px;
+}
+
+/* Change Column */
+.change-positive {
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+.change-negative {
+  color: var(--red-alert);
+  font-weight: 600;
+}
+
+/* Metric Cell */
+.metric-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.metric-value {
+  font-variant-numeric: tabular-nums;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.add-overlay-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--gray-light);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.add-overlay-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: rgba(153, 217, 217, 0.1);
+}
+
+.add-overlay-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  border-color: var(--border-color);
+  color: var(--gray-light);
+  background: transparent;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    padding: 12px 16px;
+  }
+
+  main {
+    padding: 16px;
+  }
+
+  .chart-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .toolbar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  #chart {
+    height: 400px;
+  }
+
+  .screener-container {
+    overflow-x: auto;
+  }
+}

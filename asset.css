@@ -1,0 +1,268 @@
+/* Asset Profile Page */
+.asset-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.asset-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+/* Metrics Section */
+.metrics-section,
+.detail-section {
+  background: var(--gray-dark);
+  border: 4px solid #555555;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.metrics-header,
+.detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.metrics-title,
+.detail-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.collapse-btn,
+.close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--gray-light);
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.collapse-btn:hover,
+.close-btn:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.collapse-btn.collapsed {
+  transform: rotate(180deg);
+}
+
+.metrics-body {
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+
+.metrics-body.collapsed {
+  max-height: 0 !important;
+}
+
+/* Metrics Table */
+.metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.metrics-table thead th {
+  padding: 12px 16px;
+  text-align: right;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-light);
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.metrics-table thead th:hover {
+  color: var(--teal);
+}
+
+.metrics-table thead th.active-col {
+  color: var(--teal);
+  border-bottom: 2px solid var(--teal);
+}
+
+.metrics-table thead th:first-child {
+  text-align: left;
+}
+
+.metrics-table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--white);
+}
+
+.metrics-table tbody td:first-child {
+  text-align: left;
+  color: var(--gray-light);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.metrics-table tbody td.pct-positive {
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+.metrics-table tbody td.pct-negative {
+  color: var(--red-alert);
+  font-weight: 600;
+}
+
+/* Detail Section */
+.detail-body {
+  padding: 0;
+}
+
+.detail-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.detail-body thead th {
+  padding: 12px 16px;
+  text-align: right;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-light);
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.detail-body thead th:first-child {
+  text-align: left;
+}
+
+.detail-body tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--white);
+}
+
+.detail-body tbody td:first-child {
+  text-align: left;
+  color: var(--gray-light);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.detail-body tbody td.pct-positive {
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+.detail-body tbody td.pct-negative {
+  color: var(--red-alert);
+  font-weight: 600;
+}
+
+/* Yield Toggle */
+.yield-toggle {
+  display: inline-flex;
+  gap: 0;
+  background: var(--gray-mid);
+  border-radius: 6px;
+  padding: 2px;
+  margin-bottom: 16px;
+  margin-left: 20px;
+}
+
+.yield-toggle-btn {
+  padding: 6px 16px;
+  border: none;
+  background: transparent;
+  color: var(--gray-light);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.yield-toggle-btn:hover {
+  color: var(--white);
+}
+
+.yield-toggle-btn.active {
+  background: var(--teal);
+  color: var(--black);
+}
+
+/* Yield Screener */
+.yield-screener-controls {
+  padding: 16px 20px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ys-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ys-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-light);
+}
+
+.ys-chip {
+  padding: 4px 12px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--gray-light);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.ys-chip:hover {
+  border-color: var(--teal);
+  color: var(--white);
+}
+
+.ys-chip.active {
+  background: var(--teal);
+  color: var(--black);
+  border-color: var(--teal);
+}
+
+.ys-chip.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
