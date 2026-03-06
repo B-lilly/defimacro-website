@@ -1,19 +1,21 @@
 // Simple client-side password gate
-// Not cryptographically secure — just keeps casual visitors out
 (function () {
-  const PASS_HASH = 'a5acee4e028f3f3510c0621d01b0b3d15b683215b823cc37a6bf6fd040605773';
-
-  async function sha256(message) {
-    const msgBuffer = new TextEncoder().encode(message);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+  // Simple string hash that works on HTTP and HTTPS
+  function simpleHash(str) {
+    let h = 0;
+    for (let i = 0; i < str.length; i++) {
+      h = ((h << 5) - h + str.charCodeAt(i)) | 0;
+      h = ((h << 13) ^ h) | 0;
+      h = (h * 0x5bd1e995) | 0;
+    }
+    return (h >>> 0).toString(36);
   }
 
-  const stored = sessionStorage.getItem('dm_auth');
-  if (stored === PASS_HASH) return; // already authenticated this session
+  const PASS_HASH = '1fmelts';
 
-  // Block page content
+  const stored = sessionStorage.getItem('dm_auth');
+  if (stored === PASS_HASH) return;
+
   document.documentElement.style.visibility = 'hidden';
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -41,9 +43,8 @@
     const err = document.createElement('div');
     err.style.cssText = 'color:#E9072B;font-size:13px;margin-top:12px;min-height:20px;';
 
-    async function tryLogin() {
-      const hash = await sha256(input.value);
-      if (hash === PASS_HASH) {
+    function tryLogin() {
+      if (simpleHash(input.value) === PASS_HASH) {
         sessionStorage.setItem('dm_auth', PASS_HASH);
         location.reload();
       } else {
